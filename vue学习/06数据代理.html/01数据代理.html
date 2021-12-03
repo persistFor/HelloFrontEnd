@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <script>
+        Vue.config.productionTip = false;
+        let person = {
+            mame: '张彦彦',
+            age: 18,
+            sex: '女'
+        }
+        Object.defineProperty(person, 'address', {
+            value: '北京昌平',
+            enumerable: true, //控制属性是否可以枚举
+            writeble: true, //控制属性是否可以被修改
+            configurable: true, //控制属性是否可以被删除
+            get() {
+                return '北京顺义'
+            }
+        })
+        console.log(person); //输出对象
+        console.log(Object.keys(person)); //遍历person数组
+
+        for (let key in person) {
+            console.log('@', person[key]); //只输出属性值
+        }
+    </script>
+</body>
+
+</html>

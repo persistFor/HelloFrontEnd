@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        * {
+            margin-top: 20px;
+        }
+        
+        .box1 {
+            /* width: 200px; */
+            height: 50px;
+            background-color: aqua;
+        }
+        
+        .box2 {
+            /* width: 200px; */
+            /* height: 20px; */
+            padding: 10px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- vue中的修饰符
+    prevent，阻止a的跳转
+    stop，阻止冒泡事件
+    once，事件中触发一次
+    capture，事件的捕获模式，从上到下捕获
+    self，event.target是当前操作的元素时才可以触发事件
+    passive  默认立即执行，无需等待回调执行完毕 -->
+    <div id="root">
+        <h1>学校名称: {{name}}</h1>
+        <h1>学校地址: {{address}}</h1>
+        <button @click='showInfor1'>欢迎您的到来</button>
+        <button @click='showInfor2()'>欢迎您的到来</button>
+        <div class="box1" @click.capture='showInfor1()'>
+            <div class="box2" @click='showInfor2()'></div>
+        </div>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                name: '华北电力大学',
+                address: '北京昌平',
+            },
+            methods: {
+                showInfor1() {
+                    console.log();
+                    alert('来咯')
+                },
+                showInfor2() {
+                    console.log();
+                    alert('来咯!')
+                }
+            },
+        })
+        console.log(vm);
+    </script>
+</body>
+
+</html>

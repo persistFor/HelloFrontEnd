@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div class="root">
+        <!--组件绑定属性-->
+        num = {{num}}
+        <counter @plus="numPlus" @reduce="numReduce" :snum="num"></counter>
+    </div>
+    <script>
+        const counter = {
+            template: `
+            <div>
+           <button @click = 'incrNum'>+</button>
+           <button @click = 'decNum'>-</button>
+           </div>`,
+            props: [
+                "snum"
+            ],
+            methods: {
+                incrNum() {
+                    return this.$emit('plus')
+                },
+                decNum() {
+                    return this.$emit('reduce')
+                }
+            },
+        }
+        const vm = new Vue({
+            el: '.root',
+            data: {
+                num: 0,
+            },
+            components: {
+                counter
+            },
+            methods: {
+                numPlus() {
+                    this.num++;
+                },
+                numReduce() {
+                    this.num--;
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

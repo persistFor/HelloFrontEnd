@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="el_life">
+        <life v-if="0 !== times" :times="times"></life>
+    </div>
+    <script>
+        new Vue({
+            el: "#el_life",
+            components: {
+                // 这是一个局部组件
+                'life': {
+                    props: ['times'],
+                    template: "<div>{{times}}</div>",
+                    beforeCreate: function() {
+                        console.log("beforeCreate: data、methods、computed、watch等还未初始化。");
+                    },
+                    created: function() {
+                        console.log("created: 在此处初始化data。");
+                    },
+                    beforeMount: function() {
+                        console.log("beforeMount: 已根据data和template实际生成了html。");
+                    },
+                    mounted: function() {
+                        console.log("mounted: 此方法仅执行一次，此处可做一些Ajax操作。");
+                    },
+                    beforeUpdate: function() {
+                        console.log("beforeUpdate: 此时修改data不会触发重新渲染。");
+                    },
+                    updated: function() {
+                        console.log("updated: 尽量避免在此处修改data。");
+                    },
+                    beforeDestroy: function() {
+                        console.log("beforeDestroy: 清除定时器和监听事件。");
+                    },
+                    destroyed: function() {
+                        console.log("destroyed");
+                    }
+                }
+            },
+            data: {
+                times: 3
+            },
+            created: function() {
+                this.times--;
+            },
+            mounted: function() {
+                setTimeout(() => {
+                    this.times--;
+                }, 1000);
+                setTimeout(() => {
+                    this.times--;
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+
+</html>

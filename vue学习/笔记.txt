@@ -1,0 +1,28 @@
+main.js
+	store
+	router
+		views/*.vue
+	App.vue
+
+
+App{
+	/ --> views/Home.vue
+		/login.vue/success.vue
+}
+
+
+npm i axios
+yarn add axios
+package.json > dependencies
+import * as axios from 'axios'
+Vue.prototype.$http = axios;
+this.$http();
+http 协议 cookie session
+
+安装一个微型服务器
+npm i init
+npmi express
+
+1.框架文件结构
+2.前后交互
+

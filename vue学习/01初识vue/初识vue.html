@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初识vue</title>
+    <script src="../js/vue.js">
+    </script>
+</head>
+
+<body>
+    <div id="root">
+        <!-- //两个括号就是可以改变的数据内容 -->
+        <h1>hello,{{name}}</h1>
+    </div>
+    <script>
+        Vue.config.productionTip = false; //阻止vue在运行时产生提示
+        new Vue({
+            el: '#root', //el用于指定当前vue实例为哪个容器服务
+            data: { //data中存储数据，供el所指定的容器去使用
+                name: 'vue'
+            }
+        });
+    </script>
+</body>
+
+</html>

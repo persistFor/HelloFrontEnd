@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h1>学校名称: {{name}}</h1>
+        <h1>学校地址: {{address}}</h1>
+        <button @click='showInfor1'>欢迎您的到来</button>
+        <button @click='showInfor2(66)'>欢迎您的到来</button>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                name: '华北电力大学',
+                address: '北京昌平',
+            },
+            methods: {
+                showInfor1() {
+                    console.log(e);
+                    alert('来咯')
+                },
+                showInfor2(number) {
+                    console.log(number);
+                    alert('来咯!')
+                }
+            },
+        })
+        console.log(vm);
+    </script>
+</body>
+
+</html>

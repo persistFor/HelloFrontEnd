@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!--     <div id="root">
+        <h1>学校名称: {{name}}</h1>
+        <h1>学校地址: {{address}}</h1>
+        <input type="text" v-model="number">
+        <button @click='showInfor1'>欢迎您的到来</button>
+        <button @click='showInfor2(66)'>欢迎您的到来</button>
+    </div> -->
+    <div id="root">
+        <counter></counter>
+        <counter></counter>
+    </div>
+    <script>
+        //此处定义了一个组件
+        const counter = {
+            template: `<button @click='number++'>
+                组件:你点击了{{number}}次</button>`,
+            // 作为一个组件时，data得作为一个函数
+            data() {
+                return {
+                    number: 0
+                }
+            }
+        };
+
+        //全局注册组件后，可以在任一个vue实例中调用
+        // Vue.component('counter', counter);
+
+        const vm = new Vue({
+            el: '#root',
+            components: {
+                counter
+            },
+        })
+        console.log(vm);
+    </script>
+</body>
+
+</html>

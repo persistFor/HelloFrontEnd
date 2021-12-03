@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <input type="text" v-model="msg">
+        <hr>
+        <input type="text" v-model="person.name"><br>
+        <input type="text" v-model="person.age"><button @click="person.age++">年龄增加</button>
+        <h3>姓名为：{{person.name}} 年龄为：{{person.age}}</h3>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#root',
+            data: {
+                msg: "黑马",
+                person: {
+                    "name": "黑马",
+                    "age": 13
+                }
+            },
+            watch: {
+                msg(newValue, oldValue) {
+                    console.log(newValue)
+                    console.log(oldValue)
+                },
+                person: {
+                    //深度监测，监控对象中属性值的变化
+                    deep: true,
+                    //获得最新的监控数据
+                    handler(obj) {
+                        console.log(obj.name)
+                        console.log(obj.age);
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+
+</html>
